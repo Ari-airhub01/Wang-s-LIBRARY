@@ -1,0 +1,164 @@
+drop table if exists Wang_Library;
+
+/*==============================================================*/
+/* Table: Wang_Library                                          */
+/*==============================================================*/
+create table Wang_Library
+(
+   id                   bigint(0) not null,
+   BookNo               bigint,
+   BookName	varchar(0),
+   writer               varchar(0),
+   publisher            varchar(0),
+   Bvalue                decimal(0),
+   genre                varchar(0),
+   isLend               boolean,
+   primary key (id)
+);
+
+inser into wang_library(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values("数据结构","11111111111","严蔚敏","清华大学出版社","45","计算机类","false");
+inser into wang_library(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values("野蛮进化","22222222222","蒂姆格洛弗","广东人民出版社","80","非计算机类","false");
+inser into wang_library(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values("C语言程序设计"，"33333333333","小甲鱼","清华大学出版社","30","计算机类","true");
+commit;
+
+
+drop table if exists Wang_cLibrary;
+
+/*==============================================================*/
+/* Table: Wang_Library                                          */
+/*==============================================================*/
+create table Wang_cLibrary
+(
+   id                   bigint auto_increment,
+   BookName             varchar(255),
+   BookNo               varchar(255),
+   writer               varchar(255),
+   publisher            varchar(255),
+   Bvalue                decimal(65),
+   genre                varchar(255),
+   isLend               boolean,
+   friend               varchar(255),
+   friendTel            varchar(255),
+   time                 date,
+   primary key (id)
+);
+
+insert into wang_clibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('数据结构','11111111111','严蔚敏','清华大学出版社',45,'计算机类',false);
+#inser into wang_clibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values("野蛮进化","22222222222","蒂姆格洛弗","广东人民出版社","80","非计算机类","false");
+insert into wang_clibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('C语言程序设计','33333333333','小甲鱼','清华大学出版社',30,'计算机类',true);
+commit;
+select * from wang_clibrary;
+
+
+
+
+
+drop table if exists Wang_othLibrary;
+
+/*==============================================================*/
+/* Table: Wang_Library                                          */
+/*==============================================================*/
+create table Wang_othLibrary
+(
+   id                   bigint auto_increment,
+   BookName             varchar(255),
+   BookNo               varchar(255),
+   writer               varchar(255),
+   publisher            varchar(255),
+   Bvalue                decimal(65),
+   genre                varchar(255),
+   isLend               boolean,
+   friend               varchar(255),
+   friendTel            varchar(255),
+   time                 date,
+   primary key (id)
+);
+
+#insert into wang_clibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('数据结构','11111111111','严蔚敏','清华大学出版社',45,'计算机类',false);
+insert into wang_othlibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('野蛮进化','22222222222','蒂姆格洛弗','广东人民出版社',80,'非计算机类',false);
+insert into wang_othlibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('亲密关系','22555639362','cooker','山西人民出版社',40,'非计算机类',false);
+#insert into wang_clibrary(BookName,BookNo,writer,publisher,Bvalue,genre,isLend) values('C语言程序设计','33333333333','小甲鱼','清华大学出版社',30,'计算机类',false);
+commit;
+select * from wang_othlibrary;
+
+
+
+
+
+
+
+
+
+
+
+
+
+drop table if exists BorrowList;
+
+/*==============================================================*/
+/* Table: BorrowList                                            */
+/*==============================================================*/
+create table BorrowList
+(
+   id                   int auto_increment,
+   borrReader           varchar(255),
+   bookName             varchar(255),
+   bookNo               varchar(255),
+   Bvalue               bigint(255),
+   borrTime             varchar(255),
+   Tel                  varchar(255),
+   primary key (id)
+);
+
+
+
+
+
+drop table if exists LostList;
+
+/*==============================================================*/
+/* Table: LostList                                              */
+/*==============================================================*/
+create table LostList
+(
+   id                   int auto_increment,
+   bookName             varchar(255),
+   bookNo               varchar(255),
+   writer               varchar(255),
+   Bvalue               bigint(255),
+   genre                varchar(255),
+   Time                 date,
+   isLend               boolean,
+   primary key (id)
+);
+
+
+
+
+
+
+[mysqld]
+#设置3306端口
+port=3306
+#设置mysql的安装目录
+basedir=D:\my SQL\mysql-8.0.26-winx64
+#设置mysql数据库的数据的存放目录
+datadir=D:\my SQL\mysql-8.0.26-winx64\data
+#允许最大连接数
+max_connections=800
+#允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
+max_connect_errors=6000
+#服务端使用的字符集默认为UTF8
+character-set-server=utf8
+#创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+#默认使用“mysql_native_password”插件认证
+default_authentication_plugin=mysql_native_password
+
+[mysql]
+#设置mysql客户端默认字符集
+default-character-set=utf8
+[client]
+#设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8
